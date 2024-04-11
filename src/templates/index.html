@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gesture Recognition Interface</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+            socket.on('stream_response', function(data) {
+                document.getElementById('image').src = 'data:image/jpeg;base64,' + data.image;
+                document.getElementById('prediction').textContent = data.class + ' - Probability: ' + data.probability + '%';
+            });
+
+            document.getElementById('startButton').onclick = function() {
+                socket.emit('start_camera', {});
+            };
+        });
+
+        function toggleImage() {
+            var img = document.getElementById('signsImage');
+            img.style.display = img.style.display === 'none' ? 'block' : 'none'; // Toggle display
+        }
+    </script>
+</head>
+<body>
+    <h1>Gesture Recognition Interface</h1>
+    <button id="startButton">Start Camera</button>
+    <img id="image" src="" alt="Video stream">
+    <p id="prediction"></p>
+    <button onclick="toggleImage()">Show Signs List</button>
+    <img id="signsImage" src="/static/list_hands_signs.jpg" alt="List of Hand Signs" style="display:none; max-width:100%;">
+
+</body>
+</html>
