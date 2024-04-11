@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  web:
+    build: ./front
+    ports:
+      - "9092:9090"
+    networks:
+      - my-shared-network
+
+  model:
+    build: ./model_api
+    volumes:
+      - ../models:/app/models
+    networks:
+      - my-shared-network
+
+networks:
+  my-shared-network:

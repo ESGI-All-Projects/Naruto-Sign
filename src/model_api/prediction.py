@@ -1,9 +1,8 @@
 from fastapi import FastAPI, File, UploadFile
-from fastai.vision import load_learner, open_image
-from typing import List
+from fastai.vision.all import load_learner
 
 # Chemin vers le modèle
-model_path = "models/fastai-v1.pth"
+model_path = "/models/fastai-v1.pth"
 
 # Charger le modèle une fois au démarrage de l'application
 model = load_learner(model_path)
