@@ -21,10 +21,12 @@ async def predict(file: UploadFile = File(...)):
     #img = open_image(contents)
 
     # Faire une prédiction avec le modèle chargé
-    prediction = model.predict(img)
+    pred_class, pred_idx, probs = model.predict(img)
 
     # Retourner la prédiction au format JSON
-    return {"prediction": str(prediction)}
+    return {"pred_class": str(pred_class),
+            "pred_idx": str(pred_idx),
+            "probs": str(pred_idx)}
 
 
 # Point d'entrée de l'application FastAPI avec uvicorn

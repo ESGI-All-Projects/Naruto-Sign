@@ -6,7 +6,8 @@ services:
     ports:
       - "9092:9090"
     volumes:
-      - /front/
+      - /front/static/:/app/static
+      - /front/templates/:/app/templates
     networks:
       - my-shared-network
 
