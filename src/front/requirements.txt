@@ -1,4 +1,4 @@
 Flask
 Flask-SocketIO
-opencv-python
+opencv-python-headless
 httpx
