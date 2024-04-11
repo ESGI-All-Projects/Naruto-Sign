@@ -1,10 +1,10 @@
 from fastapi import FastAPI, File, UploadFile
 from fastai.vision.all import load_learner
 
-
-model_path = "./models/fastai-v1.pth"
+model_path = "models/fastai-v1.pth"
 model = load_learner(model_path)
 app = FastAPI()
+print("my_path", model_path)
 
 @app.post("/predict/")
 async def predict(file: UploadFile = File(...)):

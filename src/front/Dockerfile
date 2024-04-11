@@ -5,20 +5,21 @@ FROM python:3.8-slim
 WORKDIR /app
 
 # Copier les fichiers de dépendances dans le répertoire de travail
-COPY front/requirements.txt .
+COPY requirements.txt .
 
 # Installer les dépendances
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Copier le reste du code source dans le répertoire de travail
-COPY front .
+COPY web_app.py .
 
 # Exposer le port sur lequel l'application Flask s'exécute
-EXPOSE 5000
+EXPOSE 8080
 
 # Définir les variables d'environnement nécessaires pour Flask
-ENV FLASK_APP=web_app.py
-ENV FLASK_RUN_HOST=0.0.0.0
+#ENV FLASK_APP=web_app.py
+#ENV FLASK_RUN_HOST=0.0.0.0
 
 # Utiliser la commande flask pour démarrer le serveur
-CMD ["flask", "run"]
+#CMD ["flask", "run"]
+CMD ["python", "web_app.py"]
