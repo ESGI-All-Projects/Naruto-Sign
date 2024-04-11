@@ -10,7 +10,6 @@ model = load_learner(model_path)
 # Initialiser l'application FastAPI
 app = FastAPI()
 
-
 # Endpoint pour effectuer des prédictions
 @app.post("/predict/")
 async def predict(file: UploadFile = File(...)):

@@ -5,13 +5,15 @@ services:
     build: ./front
     ports:
       - "9092:9090"
+    volumes:
+      - /front/
     networks:
       - my-shared-network
 
   model:
     build: ./model_api
     volumes:
-      - ../models:/app/models
+      - /model_api/models:/app/models
     networks:
       - my-shared-network
 
