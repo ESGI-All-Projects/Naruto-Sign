@@ -9,6 +9,8 @@ services:
     volumes:
       - "./front/static/:/app/static"
       - "./front/templates/:/app/templates"
+    devices:
+      - "/dev/video0:/dev/video0"
     networks:
       - my-shared-network
 
