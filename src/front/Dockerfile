@@ -13,6 +13,8 @@ RUN pip install -r requirements.txt
 # Copier le reste du code source dans le répertoire de travail
 COPY web_app.py .
 
+RUN apt-get update && apt-get install -y curl
+
 # Exposer le port sur lequel l'application Flask s'exécute
 EXPOSE 8080
 

@@ -4,7 +4,6 @@ import pathlib
 
 model_path = "./models/fastai-v1.pth"
 pathlib.WindowsPath = pathlib.PosixPath
-print("my_path", model_path)
 model = load_learner(model_path)
 app = FastAPI()
 

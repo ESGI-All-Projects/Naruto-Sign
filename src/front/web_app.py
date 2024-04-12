@@ -35,7 +35,8 @@ def gen_frames():
 
 async def predict_async(image_bytes):
     # url = 'http://localhost:9090/predict/'
-    url = 'http://my-shared-network:9090/predict/'
+    # url = 'http://my-shared-network:9090/predict/'
+    url = 'http://model:9090/predict/'
     files = {'file': ('image.jpg', image_bytes, 'image/jpeg')}
     async with httpx.AsyncClient() as client:
         resp = await client.post(url, files=files)
